@@ -1,0 +1,15 @@
+config_version: 3.0
+datasources: {}
+stores:
+  expectations_store:
+    class_name: ExpectationsStore
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      base_directory: expectations/
+  validations_store:
+    class_name: ValidationsStore
+    store_backend:
+      class_name: TupleFilesystemStoreBackend
+      base_directory: validations/
+expectations_store_name: expectations_store
+validations_store_name: validations_store

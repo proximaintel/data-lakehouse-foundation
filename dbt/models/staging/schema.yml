@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: bronze
+    schema: default
+    tables:
+      - name: source_a
+
+models:
+  - name: stg_source_a
+    columns:
+      - name: id
+        tests:
+          - not_null
+          - unique
+      - name: amount
+        tests:
+          - not_null
+      - name: created_date
+        tests:
+          - not_null

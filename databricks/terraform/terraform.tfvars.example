@@ -1,0 +1,9 @@
+location       = "eastus2"
+environment    = "prod"
+workspace_name = "dbw-lakehouse-prod"
+vnet_cidr      = "10.20.0.0/16"
+tags = {
+  managed-by  = "terraform"
+  project     = "data-lakehouse"
+  environment = "production"
+}

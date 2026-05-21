@@ -1,0 +1,10 @@
+lakehouse:
+  target: dev
+  outputs:
+    dev:
+      type: databricks
+      catalog: gold
+      schema: marts
+      host: "<workspace-url>.azuredatabricks.net"
+      http_path: "/sql/1.0/warehouses/<warehouse-id>"
+      token: "<your-token>"

@@ -1,0 +1,30 @@
+rules:
+  bronze_source_a:
+    - name: row_count_positive
+      check: row_count > 0
+      severity: critical
+
+    - name: id_not_null
+      check: id IS NOT NULL
+      severity: critical
+
+    - name: id_unique
+      check: count(id) == count(distinct id)
+      severity: critical
+
+    - name: amount_positive
+      check: amount >= 0
+      severity: warning
+
+    - name: created_date_valid
+      check: created_date <= current_date()
+      severity: warning
+
+  silver_source_a:
+    - name: no_duplicates
+      check: count(id) == count(distinct id)
+      severity: critical
+
+    - name: amount_typed
+      check: typeof(amount) == 'decimal'
+      severity: critical

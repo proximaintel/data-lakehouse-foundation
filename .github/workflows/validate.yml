@@ -1,0 +1,22 @@
+name: Validate
+on: [pull_request]
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform init -backend=false
+        working-directory: databricks/terraform
+      - run: terraform validate
+        working-directory: databricks/terraform
+  dbt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install dbt-databricks
+      - run: dbt compile --profiles-dir . --profile lakehouse
+        working-directory: dbt
